@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
+      // Prevent "process is not defined" error in browser
+      'process.env': {},
       // This ensures process.env.API_KEY is replaced by the actual string during build
       // on Vercel, provided you set the API_KEY environment variable in Vercel settings.
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
